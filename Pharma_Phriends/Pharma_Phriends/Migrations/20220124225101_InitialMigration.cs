@@ -40,12 +40,39 @@ namespace Pharma_Phriends.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "pharmacies",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PharmacyName = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_pharmacies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "rxDrugs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    DrugName = table.Column<string>(nullable: true),
+                    DrugDescription = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_rxDrugs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,6 +181,34 @@ namespace Pharma_Phriends.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "prices",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PharmacyId = table.Column<int>(nullable: false),
+                    DrugId = table.Column<int>(nullable: false),
+                    RxDrugsId = table.Column<int>(nullable: true),
+                    DrugPrice = table.Column<float>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_prices", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_prices_pharmacies_PharmacyId",
+                        column: x => x.PharmacyId,
+                        principalTable: "pharmacies",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_prices_rxDrugs_RxDrugsId",
+                        column: x => x.RxDrugsId,
+                        principalTable: "rxDrugs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -190,6 +245,16 @@ namespace Pharma_Phriends.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_prices_PharmacyId",
+                table: "prices",
+                column: "PharmacyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_prices_RxDrugsId",
+                table: "prices",
+                column: "RxDrugsId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -210,10 +275,19 @@ namespace Pharma_Phriends.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "prices");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "pharmacies");
+
+            migrationBuilder.DropTable(
+                name: "rxDrugs");
         }
     }
 }
