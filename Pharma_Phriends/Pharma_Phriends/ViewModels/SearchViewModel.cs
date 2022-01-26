@@ -11,6 +11,8 @@ namespace Pharma_Phriends.ViewModels
         public int RxDrugsId { get; set; }
         public List<SelectListItem> AllDrugs { get; set; }
         public List<RxDrug> RxDrugs { get; set; }
+        [Required]
+        public int ZipCode { get; set; }
 
         public SearchViewModel(List<RxDrug> rxDrugs)
         {

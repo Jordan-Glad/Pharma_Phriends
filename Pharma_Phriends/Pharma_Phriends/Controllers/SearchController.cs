@@ -22,13 +22,29 @@ namespace Pharma_Phriends.Controllers
              return View(rxDrugs);
         }
 
-        [HttpGet("/Search")]
+        
         public IActionResult SearchDrug()
         {
         List<RxDrug> rxDrugs = context.RxDrugs.ToList();
             SearchViewModel searchViewModel = new SearchViewModel(context.RxDrugs.ToList());
         return View(searchViewModel);
         }
+
+        
+        /*public IActionResult ProcessSearchDrugForm(SearchViewModel searchViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                RxDrug theRxDrug = context.RxDrugs.Find(searchViewModel.RxDrugsId)
+                RxDrug rxDrug = new RxDrug
+                {
+                    DrugName = SearchViewModel.DrugName,
+                    RxDrugsId = SearchViewModel.RxDrugsId,
+                    RxDrug = context.RxDrugs.Find()
+                    
+                };
+            }
+        }*/
      
     }
 }

@@ -1,4 +1,10 @@
-﻿@model Pharma_Phriends.ViewModels.SearchViewModel
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Pharma_Phriends.ViewModels.SearchViewModel
+
 
 <h1>Pick drug to search</h1>
 
@@ -11,6 +17,12 @@
     <div>
         <label asp-for="RxDrugsId">Pick a Drug to search: </label>
         <select asp-for="RxDrugsId" asp-items="Model.AllDrugs"></select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ZipCode">ZipCode</label>
+        <input class="form-control" asp-for="DrugName"/>
+        <span></span>
     </div>
 @*    @foreach (var skill in Model.)
     {
@@ -26,3 +38,4 @@
     <input type="submit" value="Search Drug" />
 
 </form>
+
