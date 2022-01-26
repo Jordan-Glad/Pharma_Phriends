@@ -7,7 +7,7 @@
         public int PharmacyId { get; set; }
         public Pharmacy Pharmacy { get; set; }
 
-        public int DrugId { get; set; }
+        public int RxDrugsId { get; set; }
         public RxDrug RxDrugs { get; set; }
 
         
