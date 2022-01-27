@@ -15,36 +15,43 @@ namespace Pharma_Phriends.Controllers
             context = dbContext;
         }
 
+ 
+
+        [HttpGet]
         public IActionResult Index()
         {
-            List<RxDrug> rxDrugs = context.RxDrugs.ToList();
-           
-             return View(rxDrugs);
+            SearchViewModel searchView = new SearchViewModel(context.RxDrugs.ToList());
+            return View(searchView);
         }
 
-        
-        public IActionResult SearchDrug()
+        [HttpPost]
+        public IActionResult Index(SearchViewModel searchViewModel)
         {
-        List<RxDrug> rxDrugs = context.RxDrugs.ToList();
-            SearchViewModel searchViewModel = new SearchViewModel(context.RxDrugs.ToList());
-        return View(searchViewModel);
-        }
-
-        
-        /*public IActionResult ProcessSearchDrugForm(SearchViewModel searchViewModel)
-        {
+            SearchViewModel searchView = new SearchViewModel(context.RxDrugs.ToList());
             if (ModelState.IsValid)
             {
-                RxDrug theRxDrug = context.RxDrugs.Find(searchViewModel.RxDrugsId)
-                RxDrug rxDrug = new RxDrug
+                RxDrug theRxDrug = context.RxDrugs.Find(searchViewModel.RxDrugsId);
+                List<Pharmacy> pharmacies = context.Pharmacies
+                    .Where(p => p.ZipCode == searchViewModel.ZipCode)
+                    .ToList();
+                List<Price> prices = new List<Price>();
+                foreach (Pharmacy phar in pharmacies)
                 {
-                    DrugName = SearchViewModel.DrugName,
-                    RxDrugsId = SearchViewModel.RxDrugsId,
-                    RxDrug = context.RxDrugs.Find()
-                    
-                };
+                    Price price = context.Prices
+                        .Where(price => price.PharmacyId == phar.Id)
+                        .Where(price => price.RxDrugsId == theRxDrug.Id)
+                        .Single();
+                    prices.Add(price);
+                }
+                searchView.RxDrugName = theRxDrug.DrugName;
+                searchView.Prices = prices;
+                searchView.Pharmacies = pharmacies;
+
+                return View(searchView);
+
             }
-        }*/
+            return View(searchView);
+        }
      
     }
 }
