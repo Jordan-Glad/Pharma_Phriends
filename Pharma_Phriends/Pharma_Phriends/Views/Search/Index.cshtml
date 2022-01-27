@@ -11,9 +11,21 @@
 
     <div class="form-group">
         <label asp-for="ZipCode">ZipCode</label>
-        <input class="form-control" asp-for="ZipCode" size="50"/>
+        <input class="form-control" asp-for="ZipCode"/>
         <span></span>
     </div>
     <input type="submit" value="Search Drug"/>
 </form>
+<table class ="table">
+    <tr>
+        <th>Drug Name</th>
+        <th>Pharmacy</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+            <td>@Model.RxDrugName</td>
+            <td>@Model.Pharmacies</td>
+            <td>@Model.Prices</td>
+    </tr>
 
+</table>

@@ -46,7 +46,7 @@ namespace Pharma_Phriends.Controllers
                 searchView.RxDrugName = theRxDrug.DrugName;
                 searchView.Prices = prices;
                 searchView.Pharmacies = pharmacies;
-
+                SearchViewModel viewModel = new SearchViewModel(theRxDrug, prices, pharmacies);
                 return View(searchView);
 
             }
