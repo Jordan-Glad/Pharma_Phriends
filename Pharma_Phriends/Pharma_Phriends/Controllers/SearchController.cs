@@ -43,15 +43,27 @@ namespace Pharma_Phriends.Controllers
                         .Single();
                     prices.Add(price);
                 }
-                searchView.RxDrugName = theRxDrug.DrugName;
-                searchView.Prices = prices;
-                searchView.Pharmacies = pharmacies;
+
                 
+               searchView.RxDrugName = theRxDrug.DrugName;
+               searchView.Prices = prices;
+               searchView.Pharmacies = pharmacies;
+                SearchViewModel viewModel = new SearchViewModel(theRxDrug, prices, pharmacies);
+                List<Display> theDisplay = new List<Display>();
+                
+
+          
+
+
                 return View(searchView);
 
-            }
+            }  
+                  
             return View(searchView);
         }
-     
+
+
+
+
     }
 }

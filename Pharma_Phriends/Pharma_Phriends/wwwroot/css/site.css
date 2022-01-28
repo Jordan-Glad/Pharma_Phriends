@@ -6,6 +6,10 @@ a.navbar-brand {
     word-break: break-all;
     color: greenyellow;
 }
+.headStyle {
+    text-align: center;
+    color: rebeccapurple;
+}
 #topcolor{
     background-color: rebeccapurple;
 }
