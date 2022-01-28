@@ -43,6 +43,7 @@ namespace Pharma_Phriends.Controllers
                         .Single();
                     prices.Add(price);
                 }
+
                 
                searchView.RxDrugName = theRxDrug.DrugName;
                searchView.Prices = prices;

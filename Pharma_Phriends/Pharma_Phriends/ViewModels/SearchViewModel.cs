@@ -36,6 +36,7 @@ namespace Pharma_Phriends.ViewModels
             }
         }
 
+
         public SearchViewModel(RxDrug theRxDrug, List<Price> prices, List<Pharmacy> pharmacies)
         {
 
