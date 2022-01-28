@@ -1,19 +1,53 @@
 ﻿@model Pharma_Phriends.ViewModels.SearchViewModel
+<div style="text-align:center;">
+    <h1  class="text-dark">Pharma <br> Phriends </h1>
+    <h7  class="text-warning">*Now With More Phriends!!</h7>
+    <br>
+    <br>
+    <br />
+</div>
+        
 
 
-<h1>Pick drug to search</h1>
+<h4 style="color:darkgray;">Pick Drug and Zip Code</h4>
+<hr />
 
-<form method="post">
-    <div>
-        <label asp-for="RxDrugsId">Pick a Drug to search: </label>
-        <select asp-for="RxDrugsId" asp-items="Model.AllDrugs"></select>
+<form class="form-inline " method="post" >
+    <div class="form-group mb-3 ">
+        <label asp-for="RxDrugsId" class="text-muted "><b>Drug: </b> </label>
+        <select asp-for="RxDrugsId" asp-items="Model.AllDrugs" class="ml-3"></select>
     </div>
-
+    
+  
+  <div class="form-group mx-sm-3 mb-3">
+    <label for="ZipCode" class="sr-only">Zip Code</label>
+    <input type="text" class="form-control" id="Zipcode" placeholder="ZipCode">
+  </div>
+  <button type="submit" class="btn btn-warning mb-3" style="color:rebeccapurple;">Search For Drug</button>
+@*/form>
     <div class="form-group">
         <label asp-for="ZipCode">ZipCode</label>
         <input class="form-control" asp-for="ZipCode" size="50"/>
         <span></span>
     </div>
-    <input type="submit" value="Search Drug"/>
+    <input type="submit" value="Search Drug"/>*@
 </form>
 
+<h4  style="color:darkgray;" >Results</h4>
+
+<table class="table">
+    <tr>
+        <th class="text-muted">Drug Name</th> 
+        <th class="text-muted">Pharmacy</th>
+        <th class="text-muted">Price</th>
+</tr>
+        
+    
+    
+     <tr>
+         <td>@Model.RxDrugName</td>
+         <td>@ViewBag.Pharmacies</td>
+         <td>@ViewBag.Drugs</td>
+     </tr>
+ 
+</table>
