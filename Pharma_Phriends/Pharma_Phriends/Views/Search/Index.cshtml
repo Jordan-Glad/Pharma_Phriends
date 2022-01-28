@@ -1,4 +1,4 @@
-﻿@model Pharma_Phriends.ViewModels.SearchViewModel
+﻿@model Pharma_Phriends.ViewModels.SearchViewModel 
 <div style="text-align:center;">
     <h1  class="text-dark">Pharma <br> Phriends </h1>
     <h7  class="text-warning">*Now With More Phriends!!</h7>
@@ -46,8 +46,11 @@
     
      <tr>
          <td>@Model.RxDrugName</td>
+
+        
          <td>@ViewBag.Pharmacies</td>
-         <td>@ViewBag.Drugs</td>
+       <td>@ViewBag.price
+         </td>
      </tr>
  
 </table>

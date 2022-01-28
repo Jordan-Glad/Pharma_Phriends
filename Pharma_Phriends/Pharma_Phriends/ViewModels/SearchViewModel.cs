@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Pharma_Phriends.Models;
 using System.ComponentModel.DataAnnotations;
 using Pharma_Phriends.Controllers;
+using Pharma_Phriends.Data;
 
 namespace Pharma_Phriends.ViewModels
 {
@@ -20,9 +21,17 @@ namespace Pharma_Phriends.ViewModels
         public SearchViewModel(){ }
         public string ListPrice     { get; set; }
         public List<Display> Display { get; set; }
-        public SearchController viewModel { get; set; }
+        public SearchController ViewModel { get; set; }
+
+        private ApplicationDbContext context;
+        public SearchViewModel(ApplicationDbContext dbContext)
+        {
+            context = dbContext;
+        }
+
         public SearchViewModel(List<RxDrug> rxDrugs)
-        
+       
+           
         {
             AllDrugs = new List<SelectListItem>();
 
@@ -47,7 +56,7 @@ namespace Pharma_Phriends.ViewModels
 
         public SearchViewModel(SearchController viewModel)
         {
-
+            
         }
     }
 }

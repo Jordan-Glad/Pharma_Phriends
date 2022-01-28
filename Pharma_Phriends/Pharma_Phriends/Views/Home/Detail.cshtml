@@ -1,0 +1,28 @@
+﻿@model List<Pharma_Phriends.Models.RxDrug>
+
+<div class="text-center">
+    <h1 class="display-5">Pharma<br/>Phriends</h1>
+    <p class="text-warning">*Top 20 Most Prescibed Drugs</p>
+</div>
+<div>
+     <div>
+        <ol>
+            @foreach (RxDrug rxDrug in Model)
+            {
+                <li>
+                    <p class="text-primary "><u>@rxDrug.DrugName</u></p>
+                    <p class="text-muted">@rxDrug.DrugDescription</p> 
+                </li>
+               
+                
+            }
+        </ol>
+    </div>
+
+
+
+
+
+
+
+</div>
