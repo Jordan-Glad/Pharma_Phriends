@@ -5,5 +5,12 @@
         public int Id { get; set; }
         public string DrugName { get; set; }
         public string DrugDescription { get; set; }
-    }
+    
+
+    public RxDrug (string drugName, string drugDescription)
+        {
+            DrugName = drugName;
+            DrugDescription = drugDescription;
+        }
+}
 }

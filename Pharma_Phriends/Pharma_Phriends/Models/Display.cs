@@ -14,7 +14,7 @@
 
     public Display() { }
 
-    public Display(RxDrug theRxDrug, Pharmacy thePharmacy, float Prices)
+    public Display(RxDrug theRxDrug, Pharmacy thePharmacy, float prices)
         {
 
             RxDrug = theRxDrug;

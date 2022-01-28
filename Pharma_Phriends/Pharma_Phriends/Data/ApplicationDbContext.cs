@@ -17,5 +17,13 @@ namespace Pharma_Phriends.Data
             : base(options)
         {
         }
+
+        public ApplicationDbContext(DbSet<RxDrug>RxDrugs)
+        {
+        }
+
+        public ApplicationDbContext()
+        {
+        }
     }
 }

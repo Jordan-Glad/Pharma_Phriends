@@ -2,6 +2,7 @@
 using Pharma_Phriends.Data;
 using Pharma_Phriends.Models;
 using Pharma_Phriends.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,11 +49,13 @@ namespace Pharma_Phriends.Controllers
                searchView.RxDrugName = theRxDrug.DrugName;
                searchView.Prices = prices;
                searchView.Pharmacies = pharmacies;
-                SearchViewModel viewModel = new SearchViewModel(theRxDrug, prices, pharmacies);
+                Console.WriteLine(prices);
+                Console.WriteLine(pharmacies);
+                SearchViewModel viewModel = new SearchViewModel(  theRxDrug, prices, pharmacies);
                 List<Display> theDisplay = new List<Display>();
+           /*     ViewBag.Price = viewModel.Prices.Where(p=>p.PharmacyId == theRxDrug.Id  );*/
+                ViewBag.Price = prices;
                 
-
-          
 
 
                 return View(searchView);
