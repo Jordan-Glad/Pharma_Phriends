@@ -1,14 +1,21 @@
 ﻿@model Pharma_Phriends.ViewModels.SearchViewModel
+<div style="text-align:center;">
+    <h1  class="text-dark">Pharma <br> Phriends </h1>
+    <h7  class="text-warning">*Now With More Phriends!!</h7>
+    <br>
+    <br>
+    <br />
+</div>
+        
 
-<h1 style="text-align:center;" class="text-muted">Pharma <br> Phriends </h1>
-    
 
-<h3 class="text-info">Pick Drug and Zip Code</h3>
+<h4 style="color:darkgray;">Pick Drug and Zip Code</h4>
+<hr />
 
-<form class="form-inline " method="post">
+<form class="form-inline " method="post" >
     <div class="form-group mb-3 ">
-        <label asp-for="RxDrugsId" class="text-muted">Drug: </label>
-        <select asp-for="RxDrugsId" asp-items="Model.AllDrugs" ></select>
+        <label asp-for="RxDrugsId" class="text-muted "><b>Drug: </b> </label>
+        <select asp-for="RxDrugsId" asp-items="Model.AllDrugs" class="ml-3"></select>
     </div>
     
   
@@ -16,7 +23,7 @@
     <label for="ZipCode" class="sr-only">Zip Code</label>
     <input type="text" class="form-control" id="Zipcode" placeholder="ZipCode">
   </div>
-  <button type="submit" class="btn btn-info mb-3">Search For Drug</button>
+  <button type="submit" class="btn btn-warning mb-3" style="color:rebeccapurple;">Search For Drug</button>
 @*/form>
     <div class="form-group">
         <label asp-for="ZipCode">ZipCode</label>
@@ -26,7 +33,7 @@
     <input type="submit" value="Search Drug"/>*@
 </form>
 
-<h2 class="text-info" >Results</h2>
+<h4  style="color:darkgray;" >Results</h4>
 
 <table class="table">
     <tr>
