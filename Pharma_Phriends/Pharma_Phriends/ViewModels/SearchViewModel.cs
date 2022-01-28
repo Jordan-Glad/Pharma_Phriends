@@ -30,11 +30,6 @@ namespace Pharma_Phriends.ViewModels
                 });
             }
         }
-        public SearchViewModel(RxDrug theRxDrug,List<Price> prices,List<Pharmacy> pharmacies)
-        {
-            RxDrugName = theRxDrug.DrugName;
-            Prices = prices;
-            Pharmacies = pharmacies;
-        }
+       
     }
 }
