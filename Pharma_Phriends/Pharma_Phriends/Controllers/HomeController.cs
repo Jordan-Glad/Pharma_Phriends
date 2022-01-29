@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Pharma_Phriends.Data;
 using Pharma_Phriends.Models;
+using Pharma_Phriends.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,17 +14,25 @@ namespace Pharma_Phriends.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        readonly ApplicationDbContext context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext dbContext)
         {
-            _logger = logger;
+            context = dbContext;
         }
+        DbSet<RxDrug> RxDrugs { get; set; }
 
         public IActionResult Index()
         {
-            return View();
+
+            var drugInfo = context.RxDrugs.ToList();
+            return View(drugInfo);
+
+
         }
+
+
+
 
         public IActionResult Privacy()
         {
