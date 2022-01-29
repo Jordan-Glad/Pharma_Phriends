@@ -22,10 +22,21 @@
         <th>Pharmacy</th>
         <th>Price</th>
     </tr>
-    <tr>
+   @foreach (var item in Model.SearchResult.PharmaPrices)
+        {
+            <tr>
+                <td>@Model.SearchResult.DrugName</td>
+                <td>@Html.DisplayFor(modelItem => item.PharmacyName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            </tr>
+        }
+    
+    
+    
+  @*  <tr>
             <td>@Model.RxDrugName</td>
             <td>@Model.Pharmacies</td>
             <td>@Model.Prices</td>
-    </tr>
+    </tr>*@
 
 </table>

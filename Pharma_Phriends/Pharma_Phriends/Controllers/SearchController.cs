@@ -30,6 +30,7 @@ namespace Pharma_Phriends.Controllers
             SearchViewModel searchView = new SearchViewModel(context.RxDrugs.ToList());
             if (ModelState.IsValid)
             {
+                List<PharmaPrice> pharmaPrices = new List<PharmaPrice>();
                 RxDrug theRxDrug = context.RxDrugs.Find(searchViewModel.RxDrugsId);
                 List<Pharmacy> pharmacies = context.Pharmacies
                     .Where(p => p.ZipCode == searchViewModel.ZipCode)
@@ -41,14 +42,10 @@ namespace Pharma_Phriends.Controllers
                         .Where(price => price.PharmacyId == phar.Id)
                         .Where(price => price.RxDrugsId == theRxDrug.Id)
                         .Single();
-                    prices.Add(price);
+                    pharmaPrices.Add(new PharmaPrice(phar.PharmacyName, price.DrugPrice));
                 }
-                searchView.RxDrugName = theRxDrug.DrugName;
-                searchView.Prices = prices;
-                searchView.Pharmacies = pharmacies;
-                SearchViewModel viewModel = new SearchViewModel(theRxDrug, prices, pharmacies);
-                return View(searchView);
-
+                searchViewModel.SearchResult = new SearchResult(theRxDrug.DrugName, pharmaPrices);
+                return View(searchViewModel);
             }
             return View(searchView);
         }

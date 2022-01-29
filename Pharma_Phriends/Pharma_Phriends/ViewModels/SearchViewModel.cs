@@ -15,10 +15,11 @@ namespace Pharma_Phriends.ViewModels
         public string RxDrugName { get; set; }
         public List<Price> Prices { get; set; }
         public List<Pharmacy> Pharmacies { get; set; }
-
+        public SearchResult SearchResult { get; set; }
         public SearchViewModel(){ }
         public SearchViewModel(List<RxDrug> rxDrugs)
         {
+            SearchResult = new SearchResult("n/a", new List<PharmaPrice>());
             AllDrugs = new List<SelectListItem>();
 
             foreach(var drug in rxDrugs)
@@ -29,12 +30,6 @@ namespace Pharma_Phriends.ViewModels
                     Text = drug.DrugName
                 });
             }
-        }
-        public SearchViewModel(RxDrug theRxDrug,List<Price> prices,List<Pharmacy> pharmacies)
-        {
-            RxDrugName = theRxDrug.DrugName;
-            Prices = prices;
-            Pharmacies = pharmacies;
         }
     }
 }
