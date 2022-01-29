@@ -28,6 +28,7 @@ namespace Pharma_Phriends.Controllers
         public IActionResult Index(SearchViewModel searchViewModel)
         {
             SearchViewModel searchView = new SearchViewModel(context.RxDrugs.ToList());
+           
             if (ModelState.IsValid)
             {
                 List<PharmaPrice> pharmaPrices = new List<PharmaPrice>();
@@ -44,8 +45,8 @@ namespace Pharma_Phriends.Controllers
                         .Single();
                     pharmaPrices.Add(new PharmaPrice(phar.PharmacyName, price.DrugPrice));
                 }
-                searchViewModel.SearchResult = new SearchResult(theRxDrug.DrugName, pharmaPrices);
-                return View(searchViewModel);
+                searchView.SearchResult = new SearchResult(theRxDrug.DrugName, pharmaPrices);
+                return View(searchView);
             }
             return View(searchView);
         }
