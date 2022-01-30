@@ -35,7 +35,7 @@
    @foreach (var item in Model.SearchResult.PharmaPrices)
         {
             <tr>
-                <td><a class="nav-link  text-primary" asp-area="" asp-controller="Home" asp-action="Index">@Model.SearchResult.DrugName</a></td>
+                <td><a class="nav-link  text-primary" asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@Model.SearchResult.RxDrugId">@Model.SearchResult.DrugName</a></td>
                 <td class="text-muted">@Html.DisplayFor(modelItem => item.PharmacyName)</td>
                 <td class="text-muted">$@Html.DisplayFor(modelItem => item.Price)</td>
             </tr>

@@ -45,7 +45,7 @@ namespace Pharma_Phriends.Controllers
                         .Single();
                     pharmaPrices.Add(new PharmaPrice(phar.PharmacyName, price.DrugPrice));
                 }
-                searchView.SearchResult = new SearchResult(theRxDrug.DrugName, pharmaPrices);
+                searchView.SearchResult = new SearchResult(theRxDrug.DrugName, pharmaPrices, theRxDrug.Id);
                 return View(searchView);
             }
             return View(searchView);

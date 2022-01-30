@@ -19,7 +19,7 @@ namespace Pharma_Phriends.ViewModels
         public SearchViewModel(){ }
         public SearchViewModel(List<RxDrug> rxDrugs)
         {
-            SearchResult = new SearchResult("n/a", new List<PharmaPrice>());
+            SearchResult = new SearchResult("n/a", new List<PharmaPrice>(), 0);
             AllDrugs = new List<SelectListItem>();
 
             foreach(var drug in rxDrugs)

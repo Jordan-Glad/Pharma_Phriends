@@ -28,10 +28,14 @@ namespace Pharma_Phriends.Controllers
             var drugInfo = context.RxDrugs.ToList();
             return View(drugInfo);
 
-
         }
-
-
+        [HttpGet("/Home/Detail/{id}")]
+        public IActionResult Detail(int id)
+        {
+            RxDrug rxDrugs = context.RxDrugs
+                .First(d => d.Id == id);
+            return View(rxDrugs);
+        }
 
 
         public IActionResult Privacy()
